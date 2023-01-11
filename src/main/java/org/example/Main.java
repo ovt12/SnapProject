@@ -3,13 +3,13 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-        CardGame snap = new CardGame();
+//        Snap snap = new Snap();
+//        snap.startSnapGame();
 
-        snap.setup();
-        snap.dealCard();
-        snap.sortingDeckInNumberOrder();
-        snap.sortingDeckIntoSuits();
-        snap.shuffleDeck();
+        Player player2 = new Player();
+        player2.startSnapGame2player();
+
+
 
     }
 }

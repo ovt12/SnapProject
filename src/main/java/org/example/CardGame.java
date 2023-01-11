@@ -5,10 +5,10 @@ package org.example;
         import java.util.Comparator;
 
 public class CardGame {
-        private static ArrayList<Card> deckOfCards = new ArrayList<>(52);
+        public static ArrayList<Card> deckOfCards = new ArrayList<>(52);
 
-        private static ArrayList<Card> playerOne = new ArrayList<>(52);
-        private static ArrayList<Card> playerTwo = new ArrayList<>(52);
+        public static ArrayList<Card> playerOne = new ArrayList<>(52);
+        public static ArrayList<Card> playerTwo = new ArrayList<>(52);
 
         private String name;
 
@@ -27,12 +27,11 @@ public class CardGame {
                 deckOfCards.add(new Card(suits[i], symbols[j], j + 1));
             }
         }
-        System.out.println(deckOfCards);
     }
 
 
     public void dealCard() {
-        Collections.shuffle(deckOfCards);
+            Collections.shuffle(deckOfCards);
         for (int i = 0; i < deckOfCards.size(); i++) {
             if (i % 2 == 0) {
                 playerOne.add(deckOfCards.remove(deckOfCards.size() - 1));
@@ -40,8 +39,7 @@ public class CardGame {
                 playerTwo.add(deckOfCards.remove(deckOfCards.size() - 1));
             }
         }
-        System.out.println("Player One's Hand: " + playerOne);
-        System.out.println("Player Two's Hand: " + playerTwo);
+
     }
 
     public void sortingDeckInNumberOrder() {
@@ -61,12 +59,11 @@ public class CardGame {
                 return c1.getSuit().compareTo(c2.getSuit());
             }
         });
-        System.out.println("Sorted Deck: " + deckOfCards);
     }
 
     public void shuffleDeck(){
         Collections.shuffle(deckOfCards);
-        System.out.println("shuffled cards: " + deckOfCards);
+
     }
 
 
