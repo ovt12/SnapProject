@@ -7,6 +7,9 @@ public class Main {
 //        snap.startSnapGame();
 
         Player player2 = new Player();
+        Introduction intro2 = new Introduction();
+
+        intro2.introSnapTwoPlayer();
         player2.startSnapGame2player();
 
 

@@ -1,6 +1,8 @@
 package org.example;
 
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Player extends CardGame {
 
@@ -8,11 +10,13 @@ public class Player extends CardGame {
 
     public void startSnapGame2player(){
 
+        Timer timer = new Timer();
+
         CardGame snap = new CardGame();
         Scanner scanner = new Scanner(System.in);
         Introduction snapIntro = new Introduction();
 
-        snapIntro.introSnapTwoPlayer();
+
         snap.setup();
         snap.shuffleDeck();
         snap.dealCard();
@@ -28,11 +32,18 @@ public class Player extends CardGame {
 
             if (player1.getValue() == player2.getValue()) {
                 String result = scanner.nextLine().toLowerCase();
-                if (result.equals("q") || result.equals("p")) {
+                if (result.equals("q")){
                     twoPlayer = true;
-                    System.out.println("SNAP!!!");
-                    System.out.println("You win");
+                    System.out.println("_____________SNAP!!!_____________");
+                    System.out.println("PLAYER ONE - YOU WIN!!!");
+
                 }
+                if (result.equals("p")) {
+                    twoPlayer = true;
+                    System.out.println("_____________SNAP!!!_____________");
+                    System.out.println("PLAYER TWO - YOU WIN!!!");
+                }
+
             }
             if (deckOfCards.size() == 0){
                 snap.setup();

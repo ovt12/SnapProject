@@ -6,15 +6,12 @@ package org.example;
 
 public class CardGame {
         public static ArrayList<Card> deckOfCards = new ArrayList<>(52);
-
         public static ArrayList<Card> playerOne = new ArrayList<>(52);
         public static ArrayList<Card> playerTwo = new ArrayList<>(52);
 
         private String name;
 
-        public CardGame(){
-        this.name = name;
-    }
+
 
 
     public void setup(){
@@ -67,8 +64,5 @@ public class CardGame {
     }
 
 
-    public String getName() {
-        return name;
-    }
 
 }
