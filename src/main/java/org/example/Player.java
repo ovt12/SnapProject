@@ -1,20 +1,16 @@
 package org.example;
 
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Player extends CardGame {
 
     public static boolean twoPlayer;
 
-    public void startSnapGame2player(){
+    public void startSnapGame2player() {
 
-        Timer timer = new Timer();
 
         CardGame snap = new CardGame();
         Scanner scanner = new Scanner(System.in);
-        Introduction snapIntro = new Introduction();
 
 
         snap.setup();
@@ -31,28 +27,32 @@ public class Player extends CardGame {
             System.out.println("Player two's card" + player2);
 
             if (player1.getValue() == player2.getValue()) {
+                long startTime = System.currentTimeMillis();
                 String result = scanner.nextLine().toLowerCase();
-                if (result.equals("q")){
+                long stopTime = System.currentTimeMillis();
+                long reactionTime = stopTime - startTime;
+                if (result.equals("q") && reactionTime < 5000) {
                     twoPlayer = true;
                     System.out.println("_____________SNAP!!!_____________");
                     System.out.println("PLAYER ONE - YOU WIN!!!");
 
                 }
-                if (result.equals("p")) {
+                else {
+                    System.out.println("Sorry to slow your time was " + reactionTime);
+                }
+                if (result.equals("p") && reactionTime < 5000) {
                     twoPlayer = true;
                     System.out.println("_____________SNAP!!!_____________");
                     System.out.println("PLAYER TWO - YOU WIN!!!");
                 }
 
             }
-            if (deckOfCards.size() == 0){
+            if (deckOfCards.size() == 0) {
                 snap.setup();
                 snap.shuffleDeck();
                 System.out.println("End of the deck, re-shuffling");
                 startSnapGame2player();
             }
         }
-
-
     }
 }
