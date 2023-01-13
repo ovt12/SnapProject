@@ -15,6 +15,7 @@ public class Snap extends CardGame {
         snap.setup();
         snap.shuffleDeck();
         snap.dealCard();
+        game = false;
 
     while (!game) {
         scanner.nextLine();
@@ -26,20 +27,20 @@ public class Snap extends CardGame {
         System.out.println("Player two's card" + player2);
 
         if (player1.getValue() == player2.getValue()) {
-            game = true;
-            System.out.println("SNAP!!!");
-            System.out.println("You win");
+            String type = scanner.nextLine().toLowerCase();
+            if (type.equals("snap")) {
+                game = true;
+                System.out.println("SNAP!!!");
+                System.out.println("You win");
+            }
         }
         if (deckOfCards.size() == 0){
             snap.setup();
             snap.shuffleDeck();
             System.out.println("End of the deck, re-shuffling");
-            startSnapGame();
+            game = false;
         }
     }
-
-
-
 
     }
 }

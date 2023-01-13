@@ -4,15 +4,16 @@ import java.util.Scanner;
 
 public class Player extends CardGame {
 
-    public static boolean twoPlayer;
+    public boolean twoPlayer;
 
     public void startSnapGame2player() {
 
 
         CardGame snap = new CardGame();
         Scanner scanner = new Scanner(System.in);
+        Introduction into2Player = new Introduction();
 
-
+        into2Player.introSnapTwoPlayer();
         snap.setup();
         snap.shuffleDeck();
         snap.dealCard();
@@ -31,7 +32,7 @@ public class Player extends CardGame {
                 String result = scanner.nextLine().toLowerCase();
                 long stopTime = System.currentTimeMillis();
                 long reactionTime = stopTime - startTime;
-                if (result.equals("q") && reactionTime < 5000) {
+                if (result.charAt(0) == 'q' && reactionTime < 5000) {
                     twoPlayer = true;
                     System.out.println("_____________SNAP!!!_____________");
                     System.out.println("PLAYER ONE - YOU WIN!!!");
@@ -40,7 +41,7 @@ public class Player extends CardGame {
                 else {
                     System.out.println("Sorry to slow your time was " + reactionTime);
                 }
-                if (result.equals("p") && reactionTime < 5000) {
+                if (result.charAt(0) == 'p' && reactionTime < 5000) {
                     twoPlayer = true;
                     System.out.println("_____________SNAP!!!_____________");
                     System.out.println("PLAYER TWO - YOU WIN!!!");
@@ -50,8 +51,9 @@ public class Player extends CardGame {
             if (deckOfCards.size() == 0) {
                 snap.setup();
                 snap.shuffleDeck();
+                System.out.println(" ");
                 System.out.println("End of the deck, re-shuffling");
-                startSnapGame2player();
+                twoPlayer = false;
             }
         }
     }
