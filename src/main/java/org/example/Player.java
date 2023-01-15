@@ -32,19 +32,20 @@ public class Player extends CardGame {
                 String result = scanner.nextLine().toLowerCase();
                 long stopTime = System.currentTimeMillis();
                 long reactionTime = stopTime - startTime;
-                if (result.charAt(0) == 'q' && reactionTime < 5000) {
-                    twoPlayer = true;
-                    System.out.println("_____________SNAP!!!_____________");
-                    System.out.println("PLAYER ONE - YOU WIN!!!");
+                if(result.length()>0) {
+                    if (result.charAt(0) == 'q' && reactionTime < 5000) {
+                        twoPlayer = true;
+                        System.out.println("_____________SNAP!!!_____________");
+                        System.out.println("PLAYER ONE - YOU WIN!!!");
 
-                }
-                else {
-                    System.out.println("Sorry to slow your time was " + reactionTime);
-                }
-                if (result.charAt(0) == 'p' && reactionTime < 5000) {
-                    twoPlayer = true;
-                    System.out.println("_____________SNAP!!!_____________");
-                    System.out.println("PLAYER TWO - YOU WIN!!!");
+                    }
+                    if (result.charAt(0) == 'p' && reactionTime < 5000) {
+                        twoPlayer = true;
+                        System.out.println("_____________SNAP!!!_____________");
+                        System.out.println("PLAYER TWO - YOU WIN!!!");
+                    } else {
+                        System.out.println("Sorry to slow your time was " + reactionTime);
+                    }
                 }
 
             }
@@ -56,5 +57,6 @@ public class Player extends CardGame {
                 twoPlayer = false;
             }
         }
+
     }
 }
