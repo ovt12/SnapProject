@@ -27,9 +27,7 @@ public class GameChoice {
                 player2.startSnapGame2player();
                 match = true;
             }
-
             else {
-                System.out.println("Incorrect input, please choose from the options.");
                 playersChoice();
             }
 

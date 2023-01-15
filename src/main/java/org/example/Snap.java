@@ -17,6 +17,7 @@ public class Snap extends CardGame {
         snap.dealCard();
         game = false;
 
+
     while (!game) {
         scanner.nextLine();
         snap.dealCard();
@@ -25,6 +26,7 @@ public class Snap extends CardGame {
         scanner.nextLine();
         Card player2 = playerTwo.remove(0);
         System.out.println("Player two's card" + player2);
+        System.out.println(" ");
 
         if (player1.getValue() == player2.getValue()) {
             String type = scanner.nextLine().toLowerCase();

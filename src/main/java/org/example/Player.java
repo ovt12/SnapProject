@@ -26,24 +26,26 @@ public class Player extends CardGame {
             scanner.nextLine();
             Card player2 = playerTwo.remove(0);
             System.out.println("Player two's card" + player2);
+            System.out.println(" ");
 
             if (player1.getValue() == player2.getValue()) {
                 long startTime = System.currentTimeMillis();
                 String result = scanner.nextLine().toLowerCase();
                 long stopTime = System.currentTimeMillis();
                 long reactionTime = stopTime - startTime;
-                if(result.length()>0) {
+                if(result.length() > 0) {
                     if (result.charAt(0) == 'q' && reactionTime < 5000) {
                         twoPlayer = true;
                         System.out.println("_____________SNAP!!!_____________");
                         System.out.println("PLAYER ONE - YOU WIN!!!");
-
+                    } else if (result.charAt(0) == 'q' && reactionTime > 5000){
+                        System.out.println("Sorry to slow your time was " + reactionTime);
                     }
                     if (result.charAt(0) == 'p' && reactionTime < 5000) {
                         twoPlayer = true;
                         System.out.println("_____________SNAP!!!_____________");
                         System.out.println("PLAYER TWO - YOU WIN!!!");
-                    } else {
+                    } else if (result.charAt(0) == 'p' && reactionTime > 5000) {
                         System.out.println("Sorry to slow your time was " + reactionTime);
                     }
                 }
