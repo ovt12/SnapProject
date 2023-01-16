@@ -6,10 +6,11 @@ public class GameChoice {
 
     public void playersChoice() {
 
-        boolean match = false;
+       boolean match = false;
 
-        System.out.println("Enter number 1 for a single player game");
-        System.out.println("Enter number 2 for a two player game");
+        System.out.println("Choose your card game!");
+        System.out.println("Enter 1 for a single player game: ");
+        System.out.println("Enter 2 for a two player game: ");
 
 
         while(!match){

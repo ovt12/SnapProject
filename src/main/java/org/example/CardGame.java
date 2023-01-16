@@ -13,8 +13,6 @@ public class CardGame {
         private String name;
 
 
-
-
     public void setup(){
 
         String[] suits = {"Spades", "Hearts", "Clubs", "Diamonds"};

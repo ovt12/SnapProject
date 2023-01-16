@@ -4,23 +4,22 @@ import java.util.Scanner;
 
 public class Player extends CardGame {
 
-    public boolean twoPlayer;
+    private boolean twoPlayer;
+    private int TIME_LIMIT = 3;
 
     public void startSnapGame2player() {
 
-
-        CardGame snap = new CardGame();
         Scanner scanner = new Scanner(System.in);
         Introduction into2Player = new Introduction();
 
-        into2Player.introSnapTwoPlayer();
-        snap.setup();
-        snap.shuffleDeck();
-        snap.dealCard();
+        into2Player.introSnapTwoPlayer(TIME_LIMIT);
+        setup();
+        shuffleDeck();
+        dealCard();
 
         while (!twoPlayer) {
             scanner.nextLine();
-            snap.dealCard();
+            dealCard();
             Card player1 = playerOne.remove(0);
             System.out.println("Player one's card" + player1);
             scanner.nextLine();
@@ -29,31 +28,31 @@ public class Player extends CardGame {
             System.out.println(" ");
 
             if (player1.getValue() == player2.getValue()) {
-                long startTime = System.currentTimeMillis();
+                long startTime = System.currentTimeMillis() / 1000;
                 String result = scanner.nextLine().toLowerCase();
-                long stopTime = System.currentTimeMillis();
+                long stopTime = System.currentTimeMillis() / 1000;
                 long reactionTime = stopTime - startTime;
                 if(result.length() > 0) {
-                    if (result.charAt(0) == 'q' && reactionTime < 5000) {
+                    if (result.charAt(0) == 'q' && reactionTime < TIME_LIMIT) {
                         twoPlayer = true;
                         System.out.println("_____________SNAP!!!_____________");
                         System.out.println("PLAYER ONE - YOU WIN!!!");
-                    } else if (result.charAt(0) == 'q' && reactionTime > 5000){
-                        System.out.println("Sorry to slow your time was " + reactionTime);
+                    } else if (result.charAt(0) == 'q' && reactionTime > TIME_LIMIT){
+                        System.out.println("Sorry to slow your time was " + reactionTime + " seconds");
                     }
-                    if (result.charAt(0) == 'p' && reactionTime < 5000) {
+                    if (result.charAt(0) == 'p' && reactionTime < TIME_LIMIT) {
                         twoPlayer = true;
                         System.out.println("_____________SNAP!!!_____________");
                         System.out.println("PLAYER TWO - YOU WIN!!!");
-                    } else if (result.charAt(0) == 'p' && reactionTime > 5000) {
-                        System.out.println("Sorry to slow your time was " + reactionTime);
+                    } else if (result.charAt(0) == 'p' && reactionTime > TIME_LIMIT) {
+                        System.out.println("Sorry to slow your time was " + reactionTime + " seconds");
                     }
                 }
 
             }
             if (deckOfCards.size() == 0) {
-                snap.setup();
-                snap.shuffleDeck();
+                setup();
+                shuffleDeck();
                 System.out.println(" ");
                 System.out.println("End of the deck, re-shuffling");
                 twoPlayer = false;

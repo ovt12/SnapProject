@@ -3,24 +3,22 @@ package org.example;
 import java.util.Scanner;
 public class Snap extends CardGame {
 
-    public static boolean game;
+    private boolean game;
 
     public void startSnapGame() {
 
-    CardGame snap = new CardGame();
     Scanner scanner = new Scanner(System.in);
     Introduction snapIntro = new Introduction();
 
         snapIntro.introSnapOnePlayer();
-        snap.setup();
-        snap.shuffleDeck();
-        snap.dealCard();
+        setup();
+        shuffleDeck();
         game = false;
 
 
     while (!game) {
         scanner.nextLine();
-        snap.dealCard();
+        dealCard();
         Card player1 = playerOne.remove(0);
         System.out.println("Player one's card" + player1);
         scanner.nextLine();
@@ -37,8 +35,8 @@ public class Snap extends CardGame {
             }
         }
         if (deckOfCards.size() == 0){
-            snap.setup();
-            snap.shuffleDeck();
+            setup();
+            shuffleDeck();
             System.out.println("End of the deck, re-shuffling");
             game = false;
         }
